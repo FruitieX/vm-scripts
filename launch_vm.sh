@@ -5,7 +5,7 @@ if [[ $(whoami) != 'root' ]]; then
 	exit
 fi
 
-sudo -u rasse synergyc --crypto-pass $(cat /home/rasse/vm/.synergy_pass) -f localhost:24800 2>&1 > /dev/null &
+sudo -u rasse synergyc --crypto-pass $(cat /home/rasse/vm/.synergy_pass) -f localhost:24800 > /dev/null 2>&1 &
 
 echo 3000 > /proc/sys/vm/nr_hugepages
 /home/rasse/vm/vfio-bind-gpu.sh
