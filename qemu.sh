@@ -9,7 +9,7 @@
 	-device ahci,bus=pcie.0,id=ahci \
 	-usb \
 	-redir tcp:24800::24800 \
-	-qmp unix:/home/rasse/vm/qmp-sock,serve
+	-qmp unix:/home/rasse/vm/qmp-sock,server
 
 #-drive file=/home/rasse/vm/win8.raw,id=disk,format=raw -device ide-hd,bus=ahci.0,drive=disk \
 

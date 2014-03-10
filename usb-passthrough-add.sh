@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# wait for qemu to start listening on the unix socket
+sleep 1
+
 SEARCH=(
 "Logitech, Inc. Unifying Receiver"
 "Samson Technologies Corp. GoMic compact condenser mic"
@@ -13,9 +16,10 @@ done
 for i in "${USB_DEVICES[@]}"; do
 vendor=$((0x$(echo $i | cut -d: -f1)))
 product=$((0x$(echo $i | cut -d: -f2)))
-sudo sh -c "echo '
+echo "
 { \"execute\": \"qmp_capabilities\" }
 { \"execute\": \"device_add\", \"arguments\": { \"driver\": \"usb-host\", \"vendorid\": \"$vendor\", \"productid\": \"$product\" }}
-' | nc -U /home/rasse/vm/qmp-sock
-"
+" | nc -U /home/rasse/vm/qmp-sock
 done
+clear
+echo -n \(qemu\)\ 

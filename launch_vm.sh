@@ -1,12 +1,18 @@
 #!/bin/bash
 
-sudo sh -c "echo 3000 > /proc/sys/vm/nr_hugepages"
-sudo ~/vm/vfio-bind-gpu.sh
-sudo ~/vm/pci-stub-misc.sh
+if [[ $(whoami) != 'root' ]]; then
+	echo "Must run script as root!"
+	exit
+fi
+
+echo 3000 > /proc/sys/vm/nr_hugepages
+/home/rasse/vm/vfio-bind-gpu.sh
+/home/rasse/vm/pci-stub-misc.sh
 
 clear
 
-sudo ~/vm/qemu.sh
+/home/rasse/vm/usb-passthrough-add.sh &
+/home/rasse/vm/qemu.sh
 
-xmodmap ~/.Xmodmap
+xmodmap /home/rasse/.Xmodmap
 reset
