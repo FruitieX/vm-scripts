@@ -10,6 +10,7 @@
 	-drive file=/home/rasse/vm/win8.raw,id=disk,format=raw -device ide-hd,bus=ahci.0,drive=disk \
 	-usb \
 	-redir tcp:24800::24800 \
+	-qmp unix:/home/rasse/vm/qmp-sock,serve
 
 #	-usb -device usb-host,hostbus=1,hostaddr=21 \
 #	-device vfio-pci,host=01:00.1,bus=root.1,addr=00.1 \
