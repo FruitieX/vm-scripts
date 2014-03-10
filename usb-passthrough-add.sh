@@ -5,7 +5,9 @@ sleep 1
 
 SEARCH=(
 "Logitech, Inc. Unifying Receiver"
-"Samson Technologies Corp. GoMic compact condenser mic"
+"Ideazon, Inc."
+"Microsoft Corp. Xbox360 Controller"
+"Holtek Semiconductor, Inc."
 )
 USB_DEVICES=()
 
