@@ -5,16 +5,17 @@ if [[ $(whoami) != 'root' ]]; then
 	exit
 fi
 
+killall -9 synergyc
 sudo -u rasse synergyc --crypto-pass $(cat /home/rasse/vm/.synergy_pass) -f localhost:24800 > /dev/null 2>&1 &
 
 echo 3000 > /proc/sys/vm/nr_hugepages
-/home/rasse/vm/vfio-bind-gpu.sh
-/home/rasse/vm/pci-stub-misc.sh
+/home/rasse/vm/scripts/vfio-bind-gpu.sh
+/home/rasse/vm/scripts/pci-stub-misc.sh
 
 clear
 
-/home/rasse/vm/usb-passthrough-add.sh &
-/home/rasse/vm/qemu.sh
+/home/rasse/vm/scripts/usb-passthrough-add.sh &
+/home/rasse/vm/scripts/qemu.sh
 
 xmodmap /home/rasse/.Xmodmap
 killall synergyc
