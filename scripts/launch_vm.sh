@@ -17,6 +17,7 @@ clear
 /home/rasse/vm/scripts/usb-passthrough-add.sh &
 /home/rasse/vm/scripts/qemu.sh
 
+echo 0 > /proc/sys/vm/nr_hugepages
 xmodmap /home/rasse/.Xmodmap
 killall synergyc
 reset

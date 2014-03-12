@@ -4,12 +4,13 @@ QEMU_PA_SAMPLES=1024 QEMU_AUDIO_DRV=pa /home/rasse/src/qemu/x86_64-softmmu/qemu-
 	-device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1 \
 	-device pci-assign,host=00:1b.0 \
 	-device ahci,bus=pcie.0,id=ahci \
-	-drive file=/home/rasse/vm/images/win8.qcow2,id=disk,format=qcow2,cache=writeback -device ide-hd,bus=ahci.0,drive=disk \
-	-drive file=/home/rasse/vm/images/win8_game.qcow2,id=game_disk,format=qcow2,cache=writeback -device ide-hd,bus=ahci.1,drive=game_disk \
-	-drive file=/dev/sdb,id=data_disk,format=raw,cache=writeback -device ide-hd,bus=ahci.2,drive=data_disk \
+	-drive file=/home/rasse/vm/images/win8.qcow2,id=disk,format=qcow2 -device ide-hd,bus=ahci.0,drive=disk \
+	-drive file=/home/rasse/vm/images/win8_game.qcow2,id=game_disk,format=qcow2 -device ide-hd,bus=ahci.1,drive=game_disk \
+	-drive file=/dev/sdb,id=data_disk,format=raw -device ide-hd,bus=ahci.2,drive=data_disk \
+	-redir tcp:24800::24800 \
+	-redir tcp:9999::9999 \
 	-device vfio-pci,host=01:00.0,bus=root.1,addr=00.0,multifunction=on,x-vga=on -vga none -nographic \
 	-usb \
-	-redir tcp:24800::24800 \
 	-qmp unix:/home/rasse/vm/qmp-sock,server
 
 #-drive file=/home/rasse/vm/images/win.iso,id=isocd -device ide-cd,bus=ahci.3,drive=isocd -boot menu=on \

@@ -7,13 +7,13 @@ echo "
 " | nc -U /home/rasse/vm/qmp-sock
 
 # let windows boot
-sleep 60
+sleep 45
 
 SEARCH=(
 "Logitech, Inc. Unifying Receiver"
-"Ideazon, Inc."
-"Holtek Semiconductor, Inc."
 "Microsoft Corp. Xbox360 Controller"
+"Holtek Semiconductor, Inc."
+"Ideazon, Inc."
 )
 USB_DEVICES=()
 
@@ -29,7 +29,7 @@ echo "
 { \"execute\": \"qmp_capabilities\" }
 { \"execute\": \"device_add\", \"arguments\": { \"driver\": \"usb-host\", \"vendorid\": \"$vendor\", \"productid\": \"$product\" }}
 " | nc -U /home/rasse/vm/qmp-sock
-sleep 1
+sleep 3
 done
 clear
 echo -n \(qemu\)\ 
