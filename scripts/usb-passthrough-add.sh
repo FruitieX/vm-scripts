@@ -7,10 +7,10 @@ echo "
 " | nc -U /home/rasse/vm/qmp-sock
 
 # let windows boot
-sleep 45
+sleep 20
 
+#"Logitech, Inc. Unifying Receiver"
 SEARCH=(
-"Logitech, Inc. Unifying Receiver"
 "Microsoft Corp. Xbox360 Controller"
 "Holtek Semiconductor, Inc."
 "Ideazon, Inc."
