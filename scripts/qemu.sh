@@ -1,4 +1,4 @@
-QEMU_PA_SAMPLES=1024 QEMU_AUDIO_DRV=pa /home/rasse/src/qemu/x86_64-softmmu/qemu-system-x86_64 -monitor stdio -enable-kvm -M q35 -m 6000 -mem-path /dev/hugepages -cpu host \
+QEMU_PA_SAMPLES=1024 QEMU_AUDIO_DRV=pa /home/rasse/src/qemu/x86_64-softmmu/qemu-system-x86_64 -monitor stdio -enable-kvm -M q35 -m 6000 -mem-path /dev/hugepages -cpu Haswell,hv-time \
 	-smp 4,sockets=1,cores=4,threads=1 \
 	-bios /home/rasse/src/seabios/out/bios.bin \
 	-device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1 \
