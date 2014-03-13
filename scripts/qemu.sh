@@ -5,7 +5,7 @@ QEMU_PA_SAMPLES=1024 QEMU_AUDIO_DRV=pa /home/rasse/src/qemu/x86_64-softmmu/qemu-
 	-device pci-assign,host=00:1b.0 \
 	-device ahci,bus=pcie.0,id=ahci \
 	-drive file=/home/rasse/vm/images/win8.qcow2,id=disk,format=qcow2 -device ide-hd,bus=ahci.0,drive=disk \
-	-drive file=/home/rasse/vm/images/win8_game.qcow2,id=game_disk,format=qcow2 -device ide-hd,bus=ahci.1,drive=game_disk \
+	-drive file=/home/rasse/vm/images/game.qcow2,id=game_disk,format=qcow2 -device ide-hd,bus=ahci.1,drive=game_disk \
 	-drive file=/dev/sdb,id=data_disk,format=raw -device ide-hd,bus=ahci.2,drive=data_disk \
 	-redir tcp:24800::24800 \
 	-redir tcp:9999::9999 \
