@@ -13,7 +13,7 @@ QEMU_PA_SAMPLES=1024 QEMU_AUDIO_DRV=pa /home/rasse/src/qemu/x86_64-softmmu/qemu-
 	-usb \
 	-qmp unix:/home/rasse/vm/qmp-sock,server
 
-#-drive file=/home/rasse/vm/images/win.iso,id=isocd -device ide-cd,bus=ahci.3,drive=isocd -boot menu=on \
+#-drive file=/home/rasse/vm/images/install_win81.iso,id=isocd -device ide-cd,bus=ahci.3,drive=isocd -boot menu=on \
 #-device ich9-intel-hda,bus=pcie.0,addr=1b.0,id=sound0 \
 #-device hda-duplex,id=sound0-codec0,bus=sound0.0,cad=0 \
 #-device pci-assign,host=00:1a.0 \
