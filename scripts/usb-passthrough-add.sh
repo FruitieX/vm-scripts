@@ -14,6 +14,8 @@ SEARCH=(
 "Microsoft Corp. Xbox360 Controller"
 "Holtek Semiconductor, Inc."
 "Ideazon, Inc."
+"AKAI"
+"Casio"
 )
 USB_DEVICES=()
 
