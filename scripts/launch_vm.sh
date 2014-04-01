@@ -18,7 +18,8 @@ clear
 /home/rasse/vm/scripts/qemu.sh
 
 echo 0 > /proc/sys/vm/nr_hugepages
-xmodmap /home/rasse/.Xmodmap
-xset m 1 1
+
+xmodmap /home/rasse/.Xmodmap	# reset keyboard layout to normal
+xset m 1 1						# reset mouse accel settings to normal
 killall synergyc
-reset
+reset							# qemu-monitor messes up the terminal
