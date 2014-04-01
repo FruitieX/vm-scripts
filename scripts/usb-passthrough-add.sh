@@ -7,7 +7,7 @@ echo "
 " | nc -U /home/rasse/vm/qmp-sock
 
 # let windows boot
-sleep 20
+sleep 40
 
 #"Logitech, Inc. Unifying Receiver"
 SEARCH=(
@@ -16,6 +16,7 @@ SEARCH=(
 "Ideazon, Inc."
 "AKAI"
 "Casio"
+"Bluetooth"
 )
 USB_DEVICES=()
 
