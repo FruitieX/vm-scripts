@@ -19,5 +19,6 @@ clear
 
 echo 0 > /proc/sys/vm/nr_hugepages
 xmodmap /home/rasse/.Xmodmap
+xset m 1 1
 killall synergyc
 reset
