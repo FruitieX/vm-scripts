@@ -24,4 +24,4 @@ herbstclient reload
 xmodmap /home/rasse/.Xmodmap	# reset keyboard layout to normal
 xset m 1 1						# reset mouse accel settings to normal
 killall synergyc
-#reset							# qemu-monitor messes up the terminal
+reset							# qemu-monitor messes up the terminal
