@@ -27,6 +27,7 @@ else
 		"Akai APC20"
 		"CASIO USB-MIDI"
 		"CSR8510 Nanosira M2272"
+		"USB Receiver"
 	)
 fi
 
