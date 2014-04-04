@@ -12,17 +12,18 @@ sudo -u rasse synergyc --crypto-pass $(cat /home/rasse/vm/.synergy_pass) -f loca
 /home/rasse/vm/scripts/vfio-bind-gpu.sh
 /home/rasse/vm/scripts/pci-stub-misc.sh
 
-clear
+#clear
 
-/home/rasse/vm/scripts/usb-passthrough-add.sh &
+/home/rasse/vm/scripts/qmp-sock.sh &
 /home/rasse/vm/scripts/qemu.sh
 
 #echo 0 > /proc/sys/vm/nr_hugepages
 
+# just in case windows never ran our shutdown script
 xrandr --output HDMI2 --auto --left-of HDMI1
 ~/bin/wallpaper.sh -o
 herbstclient reload
 xmodmap /home/rasse/.Xmodmap	# reset keyboard layout to normal
 xset m 1 1						# reset mouse accel settings to normal
 killall synergyc
-reset							# qemu-monitor messes up the terminal
+#reset							# qemu-monitor messes up the terminal
