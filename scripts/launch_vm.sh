@@ -12,8 +12,6 @@ sudo -u rasse synergyc --crypto-pass $(cat /home/rasse/vm/.synergy_pass) -f loca
 /home/rasse/vm/scripts/vfio-bind-gpu.sh
 /home/rasse/vm/scripts/pci-stub-misc.sh
 
-#clear
-
 /home/rasse/vm/scripts/qmp-sock.sh &
 /home/rasse/vm/scripts/qemu.sh
 
