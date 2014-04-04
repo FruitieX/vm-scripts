@@ -7,13 +7,18 @@ echo "
 " | nc -U /home/rasse/vm/qmp-sock
 
 # let windows boot
-sleep 40
+sleep 30
+
+# switch to windows display
+xrandr --output HDMI2 --off
+~/bin/wallpaper.sh -o
+herbstclient reload
 
 #"Logitech, Inc. Unifying Receiver"
 SEARCH=(
-"Microsoft Corp. Xbox360 Controller"
 "Holtek Semiconductor, Inc."
 "Ideazon, Inc."
+"Microsoft Corp. Xbox360 Controller"
 "AKAI"
 "Casio"
 "Bluetooth"
@@ -24,6 +29,8 @@ for i in "${SEARCH[@]}"; do
 	USB_DEVICES+=($(lsusb | grep "$i" | head -n1 | cut -d" " -f6))
 done
 
+#{ "execute": "system_powerdown" }
+#{ "execute": "human-monitor-command", "arguments": { "command-line": "info usb" } }
 for i in "${USB_DEVICES[@]}"; do
 vendor=$((0x$(echo $i | cut -d: -f1)))
 product=$((0x$(echo $i | cut -d: -f2)))
