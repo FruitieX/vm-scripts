@@ -3,3 +3,4 @@
 images/
 
 .vm_booted_host.sh_has_been_ran
+.vm_running

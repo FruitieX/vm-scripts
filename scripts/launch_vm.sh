@@ -5,6 +5,12 @@ if [[ $(whoami) != 'root' ]]; then
 	exit
 fi
 
+if [[ $(cat /home/rasse/vm/scripts/.vm_running) == '1' ]]; then
+	echo ".vm_running == 1, is vm already running? aborting."
+	exit
+fi
+
+echo 1 > /home/rasse/vm/scripts/.vm_running
 echo 0 > /home/rasse/vm/scripts/.vm_booted_host.sh_has_been_ran
 
 killall -9 synergyc
@@ -26,4 +32,5 @@ herbstclient reload
 xmodmap /home/rasse/.Xmodmap	# reset keyboard layout to normal
 xset m 1 1						# reset mouse accel settings to normal
 killall synergyc
+echo 0 > /home/rasse/vm/scripts/.vm_running
 #reset							# qemu-monitor messes up the terminal
