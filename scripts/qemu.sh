@@ -1,4 +1,4 @@
-/home/rasse/src/qemu/x86_64-softmmu/qemu-system-x86_64 -monitor stdio -enable-kvm -M q35 -m 6000 -cpu Haswell,hv-time \
+/home/rasse/src/qemu-latest/x86_64-softmmu/qemu-system-x86_64 -monitor stdio -enable-kvm -M q35 -m 6000 -cpu Haswell,hv-time \
 	-smp 4,sockets=1,cores=4,threads=1 \
 	-bios /home/rasse/src/seabios/out/bios.bin \
 	-device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1 \
@@ -9,6 +9,7 @@
 	-drive file=/dev/sdb,id=data_disk,format=raw -device ide-hd,bus=ahci.2,drive=data_disk \
 	-redir tcp:24800::24800 \
 	-redir tcp:9999::9999 \
+	-redir tcp:3389::3389 \
 	-qmp unix:/home/rasse/vm/qmp-sock,server \
 	-device vfio-pci,host=01:00.0,bus=root.1,addr=00.0,multifunction=on,x-vga=on -vga none -nographic \
 	-usb \
