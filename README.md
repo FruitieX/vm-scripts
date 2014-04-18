@@ -10,6 +10,6 @@ VGA passthrough setup:
 
 Misc notes:
 - Make sure you use the latest kernel
-- Working qemu commit hash: `6fc0303b95c873d9e384d7fb51e412ac2e53b9c1`
+- Working qemu commit hash: `940973ae0b45c9b6817bab8e4cf4df99a9ef83d7`
 - Relevant kernel bootup options: `pci-stub.ids=1002:6798,1002:aaa0` `intel_iommu=on`
 (Vendor ID / Device ID matches those of GPU and its HDMI audio chip)
