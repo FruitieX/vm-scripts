@@ -10,8 +10,12 @@ fi
 
 echo 1 > ~/vm/scripts/.vm_booted_host.sh_has_been_ran
 export DISPLAY=:0
-# switch to windows display
-xrandr --output HDMI2 --off
+# switch to windows display ONLY if HDMI1 is also connected
+xrandr | grep "HDMI1 disconnected" > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+	xrandr --output HDMI2 --off
+fi
+
 ~/bin/wallpaper.sh -o
 herbstclient reload
 

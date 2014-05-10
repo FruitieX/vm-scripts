@@ -9,7 +9,7 @@
 INFO_USB=$(echo "
 { \"execute\": \"qmp_capabilities\" }
 { \"execute\": \"human-monitor-command\", \"arguments\": { \"command-line\": \"info usb\" }}
-" | nc -U ~/vm/qmp-sock)
+" | nc -U /home/rasse/vm/qmp-sock)
 
 # get rid of non printing characters
 INFO_USB=$(echo $INFO_USB | tr -dc '[[:print:]]')
@@ -41,6 +41,6 @@ for i in "${USB_DEVICES[@]}"; do
 	echo "
 	{ \"execute\": \"qmp_capabilities\" }
 	{ \"execute\": \"human-monitor-command\", \"arguments\": { \"command-line\": \"usb_del $i\" }}
-	" | nc -U ~/vm/qmp-sock
+	" | nc -U /home/rasse/vm/qmp-sock
 	sleep 0.5
 done

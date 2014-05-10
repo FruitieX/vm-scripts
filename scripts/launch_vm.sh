@@ -10,6 +10,9 @@ if [[ $(cat /home/rasse/vm/scripts/.vm_running) == '1' ]]; then
 	exit
 fi
 
+reset
+
+export DISPLAY=:0
 echo 1 > /home/rasse/vm/scripts/.vm_running
 echo 0 > /home/rasse/vm/scripts/.vm_booted_host.sh_has_been_ran
 
