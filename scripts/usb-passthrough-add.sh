@@ -16,6 +16,7 @@ else
 	#"AKAI"
 	#"Casio"
 	#"Bluetooth"
+	#Ducky mini
 	USB_DEVICES=(
 		"04d9:0230"
 		"1038:1369"
@@ -23,6 +24,7 @@ else
 		"09e8:007b"
 		"07cf:6803"
 		"0a12:0001"
+		"0f39:0611"
 	)
 fi
 

@@ -2,7 +2,6 @@
 	-smp 4,sockets=1,cores=4,threads=1 \
 	-bios /home/rasse/src/seabios/out/bios.bin \
 	-device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1 \
-	-device pci-assign,host=00:1b.0 \
 	-device ahci,bus=pcie.0,id=ahci \
 	-drive file=/home/rasse/vm/images/win8.qcow2,id=disk,format=qcow2 -device ide-hd,bus=ahci.0,drive=disk \
 	-drive file=/home/rasse/vm/images/game.qcow2,id=game_disk,format=qcow2 -device ide-hd,bus=ahci.1,drive=game_disk \
@@ -12,7 +11,8 @@
 	-redir tcp:3389::3389 \
 	-qmp unix:/home/rasse/vm/qmp-sock,server \
 	-device vfio-pci,host=01:00.0,bus=root.1,addr=00.0,multifunction=on,x-vga=on -vga none -nographic \
-	-usb \
+	-device vfio-pci,host=00:1b.0,bus=root.1,addr=00.1 \
+	-device nec-usb-xhci
 
 	#/home/rasse/src/qemu-latest/x86_64-softmmu/qemu-system-x86_64 -monitor stdio -enable-kvm -M q35 -m 6000 -cpu Haswell,hv-time \
 	#-net nic -net bridge,br=bridge0 \

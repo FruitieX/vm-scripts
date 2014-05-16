@@ -20,8 +20,13 @@ killall -9 synergyc
 sudo -u rasse synergyc --crypto-pass $(cat /home/rasse/vm/.synergy_pass) -f localhost:24800 > /dev/null 2>&1 &
 
 #echo 3000 > /proc/sys/vm/nr_hugepages
-/home/rasse/vm/scripts/vfio-bind-gpu.sh
-/home/rasse/vm/scripts/pci-stub-misc.sh
+# vfio-bind gpu
+vfio-bind 0000:01:00.0 0000:01:00.1
+# vfio-bind hda-intel
+echo 0000:00:1b.0 > /sys/bus/pci/drivers/snd_hda_intel/unbind
+vfio-bind 0000:00:1b.0 0000:00:1b.1
+
+#/home/rasse/vm/scripts/pci-stub-misc.sh
 
 /home/rasse/vm/scripts/qmp-sock.sh &
 /home/rasse/vm/scripts/qemu.sh
