@@ -11,6 +11,7 @@ if [[ $(cat /home/rasse/vm/scripts/.vm_running) == '1' ]]; then
 fi
 
 reset
+ulimit -c unlimited
 
 export DISPLAY=:0
 echo 1 > /home/rasse/vm/scripts/.vm_running
