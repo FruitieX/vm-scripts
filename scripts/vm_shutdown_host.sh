@@ -5,7 +5,7 @@
 
 export DISPLAY=:0
 
-~/vm/scripts/usb-passthrough-del.sh
+~/vm/scripts/usb-passthrough.sh del
 sudo usb-reset.sh				# make sure you have sudo rights to this without password
 xrandr --output HDMI2 --auto --left-of HDMI1
 ~/bin/wallpaper.sh -o

@@ -20,4 +20,4 @@ fi
 herbstclient reload
 
 # pass through usb devices
-~/vm/scripts/usb-passthrough-add.sh
+~/vm/scripts/usb-passthrough.sh add
