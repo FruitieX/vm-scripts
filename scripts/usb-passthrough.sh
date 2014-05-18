@@ -18,6 +18,7 @@ else
 	#"Casio"
 	#"Bluetooth"
 	#Ducky mini
+	#"Samson"
 	USB_DEVICES=(
 		"04d9:0230"
 		"1038:1369"
@@ -26,6 +27,7 @@ else
 		"07cf:6803"
 		"0a12:0001"
 		"0f39:0611"
+		"17a0:0305"
 	)
 fi
 
