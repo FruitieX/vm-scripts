@@ -9,7 +9,7 @@
 
 if [ ! -z "$2" ]
 then
-	USB_DEVICES=($(lsusb | grep "$@" | head -n1 | cut -d" " -f6))
+	USB_DEVICES=($(lsusb | grep "$2" | head -n1 | cut -d" " -f6))
 else
 	#"Holtek Semiconductor, Inc."
 	#"Ideazon, Inc."
