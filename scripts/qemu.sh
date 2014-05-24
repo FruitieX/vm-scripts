@@ -13,7 +13,8 @@
 	-device vfio-pci,host=01:00.0,bus=root.1,addr=00.0,multifunction=on,x-vga=on -vga none -nographic \
 	-device vfio-pci,host=00:1b.0,bus=root.1,addr=00.1 \
 	-usb \
-	-device nec-usb-xhci,id=xhci
+	-device nec-usb-xhci,id=xhci \
+	-device ich9-usb-uhci1,id=uhci
 
 	#-device nec-usb-xhci,id=xhci \
 	#/home/rasse/src/qemu-latest/x86_64-softmmu/qemu-system-x86_64 -monitor stdio -enable-kvm -M q35 -m 6000 -cpu Haswell,hv-time \
