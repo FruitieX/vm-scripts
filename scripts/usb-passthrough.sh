@@ -33,14 +33,14 @@ fi
 
 for i in "${USB_DEVICES[@]}"; do
 	(lsusb | grep "$i") | while read line; do
+		bus=$(echo $line | cut -d" " -f2 | sed 's/^0*//')
+		device=$(echo $line | cut -d" " -f4 | sed 's/://' | sed 's/^0*//')
+		echo $bus.$device
 		if [[ $1 == "add" ]]; then
 			echo "Passing through (USB):"
 			echo $line
 			#vendor=$((0x$(echo $i | cut -d: -f1)))
 			#product=$((0x$(echo $i | cut -d: -f2)))
-			bus=$(echo $line | cut -d" " -f2 | sed 's/^0*//')
-			device=$(echo $line | cut -d" " -f4 | sed 's/://' | sed 's/^0*//')
-			echo $bus.$device
 			echo "
 			{ \"execute\": \"qmp_capabilities\" }
 			{ \"execute\": \"device_add\", \"arguments\": { \"driver\": \"usb-host\", \"hostbus\": \"$bus\", \"hostaddr\": \"$device\", \"id\": \"usb_$bus.$device\", \"bus\": \"xhci.0\" }}
@@ -48,10 +48,11 @@ for i in "${USB_DEVICES[@]}"; do
 			# NOTE: hostbus, hostaddr, hostport could be used here too
 			sleep 3 # windows guests hate you if you shove 10 usb devices in at once
 		elif [[ $1 == "del" ]]; then
-			echo "Undoing passthrough (USB) $i..."
+			echo "Undoing passthrough (USB):"
+			echo $line
 			echo "
 			{ \"execute\": \"qmp_capabilities\" }
-			{ \"execute\": \"device_del\", \"arguments\": { \"id\": \"usb_$vendor.$product\" }}
+			{ \"execute\": \"device_del\", \"arguments\": { \"id\": \"usb_$bus.$device\" }}
 			" | nc -U ~/vm/qmp-sock
 			sleep 0.5
 		else
