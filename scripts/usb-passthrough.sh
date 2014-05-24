@@ -9,7 +9,7 @@
 
 if [ ! -z "$2" ]
 then
-	USB_DEVICES=($(lsusb | grep "$2" | head -n1 | cut -d" " -f6))
+	USB_DEVICES=("$2")
 else
 	#"Holtek Semiconductor, Inc."
 	#"Ideazon, Inc."
@@ -32,24 +32,31 @@ else
 fi
 
 for i in "${USB_DEVICES[@]}"; do
-	vendor=$((0x$(echo $i | cut -d: -f1)))
-	product=$((0x$(echo $i | cut -d: -f2)))
-	if [[ $1 == "add" ]]; then
-		echo "Passing through (USB) $i..."
-		echo "
-		{ \"execute\": \"qmp_capabilities\" }
-		{ \"execute\": \"device_add\", \"arguments\": { \"driver\": \"usb-host\", \"vendorid\": \"$vendor\", \"productid\": \"$product\", \"id\": \"usb_$vendor.$product\" }}
-		" | nc -U ~/vm/qmp-sock
-		sleep 3 # windows guests hate you if you shove 10 usb devices in at once
-	elif [[ $1 == "del" ]]; then
-		echo "Undoing passthrough (USB) $i..."
-		echo "
-		{ \"execute\": \"qmp_capabilities\" }
-		{ \"execute\": \"device_del\", \"arguments\": { \"id\": \"usb_$vendor.$product\" }}
-		" | nc -U ~/vm/qmp-sock
-		sleep 0.5
-	else
-		echo "Unknown command $1! Use either add or del as first argument."
-		exit
-	fi
+	(lsusb | grep "$i") | while read line; do
+		if [[ $1 == "add" ]]; then
+			echo "Passing through (USB):"
+			echo $line
+			#vendor=$((0x$(echo $i | cut -d: -f1)))
+			#product=$((0x$(echo $i | cut -d: -f2)))
+			bus=$(echo $line | cut -d" " -f2 | sed 's/^0*//')
+			device=$(echo $line | cut -d" " -f4 | sed 's/://' | sed 's/^0*//')
+			echo $bus.$device
+			echo "
+			{ \"execute\": \"qmp_capabilities\" }
+			{ \"execute\": \"device_add\", \"arguments\": { \"driver\": \"usb-host\", \"hostbus\": \"$bus\", \"hostaddr\": \"$device\", \"id\": \"usb_$bus.$device\", \"bus\": \"xhci.0\" }}
+			" | nc -U ~/vm/qmp-sock
+			# NOTE: hostbus, hostaddr, hostport could be used here too
+			sleep 3 # windows guests hate you if you shove 10 usb devices in at once
+		elif [[ $1 == "del" ]]; then
+			echo "Undoing passthrough (USB) $i..."
+			echo "
+			{ \"execute\": \"qmp_capabilities\" }
+			{ \"execute\": \"device_del\", \"arguments\": { \"id\": \"usb_$vendor.$product\" }}
+			" | nc -U ~/vm/qmp-sock
+			sleep 0.5
+		else
+			echo "Unknown command $1! Use either add or del as first argument."
+			exit
+		fi
+	done
 done
