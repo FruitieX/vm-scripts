@@ -48,8 +48,10 @@ for i in "${USB_DEVICES[@]}"; do
 		product=$(echo $line | cut -d" " -f6 | cut -d: -f2)
 
 		guestbus="xhci.0"
-		if [[ $(echo $line | cut -d" " -f6) == "10f5:0211" ]]; then
+		vendorproduct="$vendor:$product"
+		if [[ $vendorproduct == "10f5:0211" || $vendorproduct == "0f39:0611" ]]; then
 			# for some reason the qemu xhci code does not like this device
+			echo "passing to uhci"
 			guestbus="uhci.0"
 		fi
 
