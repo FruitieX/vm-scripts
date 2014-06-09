@@ -3,8 +3,8 @@
 	-bios /home/rasse/src/seabios/out/bios.bin \
 	-device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1 \
 	-device ahci,bus=pcie.0,id=ahci \
-	-drive file=/home/rasse/vm/images/win8.qcow2,id=disk,format=qcow2 -device ide-hd,bus=ahci.0,drive=disk \
-	-drive file=/home/rasse/vm/images/game.qcow2,id=game_disk,format=qcow2 -device ide-hd,bus=ahci.1,drive=game_disk \
+	-drive file=/btrfs/vm/win8.qcow2,id=disk,format=qcow2 -device ide-hd,bus=ahci.0,drive=disk \
+	-drive file=/btrfs/vm/game.qcow2,id=game_disk,format=qcow2 -device ide-hd,bus=ahci.1,drive=game_disk \
 	-drive file=/dev/sdb,id=data_disk,format=raw -device ide-hd,bus=ahci.2,drive=data_disk \
 	-redir tcp:24800::24800 \
 	-redir tcp:9999::9999 \
