@@ -24,6 +24,9 @@ else
 	# Casio MIDI Keyboard
 	# Bluetooth Dongle
 	# Samson USB Mic
+	# ACRUX gc adapter
+	# driving force 1
+	# driving force 2
 	USB_DEVICES=(
 		"04d9:0230"
 		"1038:1369"
@@ -35,6 +38,9 @@ else
 		"07cf:6803"
 		"0a12:0001"
 		"17a0:0305"
+		"1a34:f705"
+		"046d:c294"
+		"046d:c29a"
 	)
 fi
 
