@@ -14,11 +14,12 @@
 	-device vfio-pci,host=00:1b.0,bus=root.1,addr=00.1 \
 	-usb \
 	-device nec-usb-xhci,id=xhci \
-	-device ich9-usb-uhci1,id=uhci
+	-device ich9-usb-uhci1,id=uhci \
+	-netdev bridge,id=hn0,helper=/home/rasse/src/qemu-latest/qemu-bridge-helper \
+	-device virtio-net-pci,netdev=hn0,id=nic1
 
 	#-device nec-usb-xhci,id=xhci \
 	#/home/rasse/src/qemu-latest/x86_64-softmmu/qemu-system-x86_64 -monitor stdio -enable-kvm -M q35 -m 6000 -cpu Haswell,hv-time \
-	#-net nic -net bridge,br=bridge0 \
 	#-mem-path /dev/hugepages
 	#QEMU_PA_SAMPLES=1024 QEMU_AUDIO_DRV=pa
 	#-device ich9-intel-hda,bus=pcie.0,addr=1b.0,id=sound0 \
