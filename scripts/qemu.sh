@@ -1,4 +1,4 @@
-/home/rasse/src/qemu-latest/x86_64-softmmu/qemu-system-x86_64 -monitor stdio -enable-kvm -M q35 -m 6000 -cpu host,hv-time,hv_relaxed,hv_vapic,hv_spinlocks=0x1000 \
+/home/rasse/src/qemu/x86_64-softmmu/qemu-system-x86_64 -monitor stdio -enable-kvm -M q35 -m 6000 -cpu host,hv-time,hv_relaxed,hv_vapic,hv_spinlocks=0x1000 \
 	-smp 4,sockets=1,cores=4,threads=1 \
 	-bios /home/rasse/src/seabios/out/bios.bin \
 	-device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1 \
@@ -15,7 +15,7 @@
 	-usb \
 	-device nec-usb-xhci,id=xhci \
 	-device ich9-usb-uhci1,id=uhci \
-	-netdev bridge,id=hn0,helper=/home/rasse/src/qemu-latest/qemu-bridge-helper \
+	-netdev bridge,id=hn0,helper=/home/rasse/src/qemu/qemu-bridge-helper \
 	-device virtio-net-pci,netdev=hn0,id=nic1
 
 	#-device nec-usb-xhci,id=xhci \
