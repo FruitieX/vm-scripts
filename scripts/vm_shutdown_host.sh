@@ -13,5 +13,5 @@ herbstclient reload
 xmodmap /home/rasse/.Xmodmap	# reset keyboard layout to normal
 xset m 1 1						# reset mouse accel settings to normal
 killall synergyc
-
+exit 0
 # pass through usb devices
