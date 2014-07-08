@@ -16,9 +16,8 @@
 	-device ich9-usb-uhci1,id=uhci \
 	-netdev bridge,id=bridge,helper=/home/rasse/src/qemu/qemu-bridge-helper \
 	-device virtio-net-pci,netdev=bridge,id=pubnet,mac=13:37:12:34:12:34 \
-    -netdev user,id=user \
-    -device virtio-net-pci,netdev=user,id=privnet,mac=13:38:12:34:12:34 \
-	-redir tcp:24800::24800
+    -netdev user,id=user,hostfwd=tcp::24800-:24800 \
+    -device virtio-net-pci,netdev=user,id=privnet,mac=13:38:12:34:12:34
 
 	#-redir tcp:9999::9999 \
 	#-redir tcp:3389::3389 \

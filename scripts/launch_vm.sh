@@ -18,7 +18,7 @@ echo 1 > /home/rasse/vm/scripts/.vm_running
 echo 0 > /home/rasse/vm/scripts/.vm_booted_host.sh_has_been_ran
 
 killall -9 synergyc
-sudo -u rasse synergyc --crypto-pass $(cat /home/rasse/vm/.synergy_pass) -f vm.fruitiex.org:24800 > /dev/null 2>&1 &
+sudo -u rasse synergyc --crypto-pass $(cat /home/rasse/vm/.synergy_pass) -f localhost:24800 > /dev/null 2>&1 &
 
 #echo 3000 > /proc/sys/vm/nr_hugepages
 # vfio-bind gpu
