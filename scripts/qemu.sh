@@ -4,6 +4,7 @@ export QEMU_PA_SAMPLES=1024
 /home/rasse/src/qemu-latest/x86_64-softmmu/qemu-system-x86_64 \
 	-monitor stdio -enable-kvm -M q35 -m 6000 \
 	-cpu host,hv-time,hv_relaxed,hv_vapic,hv_spinlocks=0x1000 \
+    -balloon virtio \
 	-smp 4,sockets=1,cores=4,threads=1 \
 	-bios /home/rasse/src/seabios/out/bios.bin \
 	-device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1 \

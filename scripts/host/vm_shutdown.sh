@@ -5,8 +5,8 @@
 
 export DISPLAY=:0
 
-~/vm/scripts/usb-passthrough.sh del
-sudo usb-reset.sh				# make sure you have sudo rights to this without password
+~/vm/scripts/usb-passthrough.sh del all
+#sudo usb-reset.sh				# make sure you have sudo rights to this without password
 xrandr --output HDMI1 --mode 1920x1080 --rate 75 --rotate left --pos 0x0
 xrandr --output HDMI2 --mode 1920x1080 --rate 75 --rotate normal --pos 1080x475
 xrandr --output VGA1 --mode 1920x1080 --rate 75 --rotate right --pos 3000x0

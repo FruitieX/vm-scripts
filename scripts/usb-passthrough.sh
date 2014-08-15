@@ -10,13 +10,26 @@
 trap "exit 1" TERM
 export TOP_PID=$$
 
-if [ ! -z "$2" ]
-then
+USB_DEVICES=()
+
+if [ ! -z "$2" ]; then
 	USB_DEVICES=("$2")
-else
-	# Holtek Semiconductor, Inc. (Ducky GO2PRO)
-	# Ideazon, Inc. (SteelSeries Sensei RAW)
-	# Ducky mini
+fi
+
+# pass through main mouse and keyboard
+if [[ "$2" == "input" || "$2" == "all" ]]; then
+    # Holtek Semiconductor, Inc. (Ducky GO2PRO)
+    # Ideazon, Inc. (SteelSeries Sensei RAW)
+    # Ducky mini
+    USB_DEVICES+=(
+        "04d9:0230"
+        "1038:1369"
+        "0f39:0611"
+    )
+fi
+
+# pass through rest of usb devices
+if [[ "$2" == "most" || "$2" == "all" ]]; then
 	# Logitech, Inc. Unifying Receiver
 	# Microsoft Corp. Xbox360 Controller
 	# Turtle beach
@@ -27,10 +40,7 @@ else
 	# ACRUX gc adapter
 	# driving force 1
 	# driving force 2
-	USB_DEVICES=(
-		"04d9:0230"
-		"1038:1369"
-		"0f39:0611"
+	USB_DEVICES+=(
 		"046d:c52b"
 		"045e:028e"
 		"10f5:0211"
