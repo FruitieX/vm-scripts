@@ -9,10 +9,10 @@ export QEMU_PA_SAMPLES=1024
 	-bios /home/rasse/src/seabios/out/bios.bin \
 	-device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1 \
 	-device ahci,bus=pcie.0,id=ahci \
-	-drive file=/btrfs/vm/win8.raw,id=disk,format=raw -device ide-hd,bus=ahci.0,drive=disk \
-	-drive file=/btrfs/vm/game.raw,id=game_disk,format=raw -device ide-hd,bus=ahci.1,drive=game_disk \
-	-drive file=/dev/sdb,id=data_disk,format=raw -device ide-hd,bus=ahci.2,drive=data_disk \
-    -drive file=/dev/sda,id=ssd_disk,format=raw -device ide-hd,bus=ahci.3,drive=ssd_disk \
+	-drive file=/btrfs/vm/win8.raw,id=disk,format=raw,cache=none -device ide-hd,bus=ahci.0,drive=disk \
+	-drive file=/btrfs/vm/game.raw,id=game_disk,format=raw,cache=none -device ide-hd,bus=ahci.1,drive=game_disk \
+	-drive file=/dev/sdb,id=data_disk,format=raw,cache=none -device ide-hd,bus=ahci.2,drive=data_disk \
+    -drive file=/dev/sda,id=ssd_disk,format=raw,cache=none -device virtio-blk-pci,scsi=on,drive=ssd_disk \
 	-qmp unix:/home/rasse/vm/qmp-sock,server \
 	-device vfio-pci,host=01:00.0,bus=root.1,addr=00.0,multifunction=on,x-vga=on -vga none -nographic \
 	-device vfio-pci,host=00:1b.0,bus=root.1,addr=00.1 \
