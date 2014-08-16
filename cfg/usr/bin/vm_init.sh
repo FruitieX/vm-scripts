@@ -13,8 +13,8 @@ vfio-bind() {
 }
 
 # vfio-bind gpu
-vfio-bind 0000:01:00.0 0000:01:00.1
+vfio-bind 0000:01:00.0 0000:01:00.1 || (exit 0)
 
 # vfio-bind hda-intel
-#echo 0000:00:1b.0 > /sys/bus/pci/drivers/snd_hda_intel/unbind
-#vfio-bind 0000:00:1b.0 0000:00:1b.1
+echo 0000:00:1b.0 > /sys/bus/pci/drivers/snd_hda_intel/unbind || (exit 0)
+vfio-bind 0000:00:1b.0 0000:00:1b.1 || (exit 0)
