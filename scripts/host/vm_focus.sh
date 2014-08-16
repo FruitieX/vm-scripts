@@ -8,5 +8,5 @@ export DISPLAY=:0
 xrandr --output HDMI2 --off
 
 # passthrough usb input devices
-~/vm/scripts/usb-passthrough.sh add input
+~/vm/scripts/usb-passthrough.sh add input > /dev/null 2>&1
 herbstclient reload
