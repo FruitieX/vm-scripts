@@ -1,0 +1,15 @@
+[Unit]
+Description=QEMU virtual machine
+
+[Service]
+Environment="type=system-x86_64" "haltcmd=kill -INT $MAINPID" \
+	    "QEMU_AUDIO_DRV=pa" "QEMU_PA_SAMPLES=1024"
+EnvironmentFile=/etc/conf.d/qemu.d/%i
+ExecStartPre=/usr/bin/vm_init.sh
+ExecStart=/usr/bin/env qemu-${type} -name %i -nographic $args
+ExecStop=/bin/sh -c ${haltcmd}
+TimeoutStopSec=30
+KillMode=none
+
+[Install]
+WantedBy=multi-user.target

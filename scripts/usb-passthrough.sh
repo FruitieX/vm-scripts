@@ -79,7 +79,7 @@ for i in "${USB_DEVICES[@]}"; do
 			echo "
 			{ \"execute\": \"qmp_capabilities\" }
 			{ \"execute\": \"device_add\", \"arguments\": { \"driver\": \"usb-host\", \"hostbus\": \"$bus\", \"hostaddr\": \"$device\", \"id\": \"usb_$vendor.$product.$bus.$device\", \"bus\": \"$guestbus\" }}
-			" | nc -U ~/vm/qmp-sock
+			" | nc localhost 4444
 			# NOTE: hostbus, hostaddr, hostport could be used here too
 			sleep 3 # windows guests hate you if you shove 10 usb devices in at once
 		elif [[ $1 == "del" ]]; then
@@ -88,7 +88,7 @@ for i in "${USB_DEVICES[@]}"; do
 			echo "
 			{ \"execute\": \"qmp_capabilities\" }
 			{ \"execute\": \"device_del\", \"arguments\": { \"id\": \"usb_$vendor.$product.$bus.$device\" }}
-			" | nc -U ~/vm/qmp-sock
+			" | nc localhost 4444
 			sleep 0.5
 		else
 			echo "Unknown command $1! Use either add or del as first argument."

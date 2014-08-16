@@ -2,7 +2,7 @@
 
 HOST="10.0.2.2"
 USER=rasse
-COMMAND="bash ~/vm/scripts/host/vm_booted.sh"
+COMMAND="bash ~/vm/scripts/usb-passthrough.sh add most"
 until ssh -oStrictHostKeyChecking=no $USER@$HOST $COMMAND
 do
 	echo "Retrying..."
