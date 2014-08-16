@@ -9,7 +9,7 @@ ExecStartPre=/usr/bin/vm_init.sh
 ExecStart=/usr/bin/env qemu-${type} -name %i -nographic $args
 ExecStop=/bin/sh -c ${haltcmd}
 TimeoutStopSec=30
-KillMode=none
+KillSignal=SIGCONT
 
 [Install]
 WantedBy=multi-user.target
