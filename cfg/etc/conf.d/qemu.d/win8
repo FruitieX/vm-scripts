@@ -22,16 +22,13 @@ args="-monitor stdio -enable-kvm -M q35 -m 6000 \
 -device virtio-net-pci,netdev=user,id=privnet,mac=13:38:12:34:12:34 \
 -soundhw hda"
 
-# this is how you make windows understand the urgency of matters
-haltcmd="echo '{ \"execute\": \"qmp_capabilities\" }{ \"execute\": \"system_powerdown\"}' | nc localhost 4444;\
-sleep 5;\
-echo '{ \"execute\": \"qmp_capabilities\" }{ \"execute\": \"system_powerdown\"}' | nc localhost 4444;\
-sleep 5;\
-echo '{ \"execute\": \"qmp_capabilities\" }{ \"execute\": \"system_powerdown\"}' | nc localhost 4444;\
-sleep 5;\
-echo '{ \"execute\": \"qmp_capabilities\" }{ \"execute\": \"system_powerdown\"}' | nc localhost 4444;\
-sleep 5;\
-echo '{ \"execute\": \"qmp_capabilities\" }{ \"execute\": \"system_powerdown\"}' | nc localhost 4444;\
-sleep 5;\
+# windows sometimes presents this stupid dialog with processes still running
+# the default delay until this shows up is 5000ms on win8
+
+# ... this is how you make windows understand the urgency of matters
+haltcmd="echo '{ \"execute\": \"qmp_capabilities\" }{ \"execute\": \"system_powerdown\"}' | nc localhost 4444 && \
+sleep 9;\
+echo '{ \"execute\": \"qmp_capabilities\" }{ \"execute\": \"system_powerdown\"}' | nc localhost 4444 && \
+sleep 1;\
 echo '{ \"execute\": \"qmp_capabilities\" }{ \"execute\": \"system_powerdown\"}' | nc localhost 4444"
 # if it's not dead by now we kill it
