@@ -2,6 +2,7 @@ FruitieX' VM scripts
 ====================
 
 Includes:
+---------
 * systemd service unit for starting qemu
     * loads its configuration from /etc/conf.d/qemu.d/vmname, see `cfg/` for example
 * working configuration for vga passthrough, see following files in `cfg/`:
@@ -33,4 +34,4 @@ Misc notes:
 - Look inside the cfg directory for files that you may need to modify on your
   system.
 - Make sure you use the latest kernel
-- Working qemu commit hash: `940973ae0b45c9b6817bab8e4cf4df99a9ef83d7`
+- Working qemu commit hash: `1a381811b495651ddfc2b50d7c8cfaaf375816b0`
