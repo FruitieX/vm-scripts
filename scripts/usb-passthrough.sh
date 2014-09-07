@@ -28,15 +28,21 @@ if [[ "$2" == "input" || "$2" == "all" ]]; then
     )
 fi
 
+if [[ "$2" == "music" || "$2" == "all" ]]; then
+    # AKAI APC20
+    # Casio MIDI Keyboard
+    # Samson USB Mic
+    "09e8:007b"
+    "07cf:6803"
+    "17a0:0305"
+fi
+
 # pass through rest of usb devices
 if [[ "$2" == "most" || "$2" == "all" ]]; then
 	# Logitech, Inc. Unifying Receiver
 	# Microsoft Corp. Xbox360 Controller
 	# Turtle beach
-	# AKAI APC20
-	# Casio MIDI Keyboard
 	# Bluetooth Dongle
-	# Samson USB Mic
 	# ACRUX gc adapter
 	# driving force 1
 	# driving force 2
@@ -44,10 +50,7 @@ if [[ "$2" == "most" || "$2" == "all" ]]; then
 		"046d:c52b"
 		"045e:028e"
 		"10f5:0211"
-		"09e8:007b"
-		"07cf:6803"
 		"0a12:0001"
-		"17a0:0305"
 		"1a34:f705"
 		"046d:c294"
 		"046d:c29a"
