@@ -60,7 +60,7 @@ fi
 # loop over given search strings
 for i in "${USB_DEVICES[@]}"; do
 	# loop over results of search string
-	(lsusb | grep "$i") | while read line; do
+	(lsusb | grep -i "$i") | while read line; do
 		bus=$(echo $line | cut -d" " -f2 | sed 's/^0*//')
 		device=$(echo $line | cut -d" " -f4 | sed 's/://' | sed 's/^0*//')
 		vendor=$(echo $line | cut -d" " -f6 | cut -d: -f1)
