@@ -32,9 +32,11 @@ if [[ "$2" == "music" || "$2" == "all" ]]; then
     # AKAI APC20
     # Casio MIDI Keyboard
     # Samson USB Mic
-    "09e8:007b"
-    "07cf:6803"
-    "17a0:0305"
+    USB_DEVICES+=(
+        "09e8:007b"
+        "07cf:6803"
+        "17a0:0305"
+    )
 fi
 
 # pass through rest of usb devices
