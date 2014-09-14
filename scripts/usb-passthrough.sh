@@ -20,11 +20,9 @@ fi
 if [[ "$2" == "input" || "$2" == "all" ]]; then
     # Holtek Semiconductor, Inc. (Ducky GO2PRO)
     # Ideazon, Inc. (SteelSeries Sensei RAW)
-    # Ducky mini
     USB_DEVICES+=(
         "04d9:0230"
         "1038:1369"
-        "0f39:0611"
     )
 fi
 
@@ -32,10 +30,12 @@ if [[ "$2" == "music" || "$2" == "all" ]]; then
     # AKAI APC20
     # Casio MIDI Keyboard
     # Samson USB Mic
+    # Native Instruments Maschine Mikro MK2
     USB_DEVICES+=(
         "09e8:007b"
         "07cf:6803"
         "17a0:0305"
+        "17cc:1200"
     )
 fi
 
