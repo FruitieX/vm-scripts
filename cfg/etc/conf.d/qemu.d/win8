@@ -16,6 +16,7 @@ args="-monitor stdio -enable-kvm -M q35 -m 6000 \
 -usb \
 -device nec-usb-xhci,id=xhci \
 -device ich9-usb-uhci1,id=uhci \
+-device ich9-usb-ehci1,id=ehci \
 -netdev bridge,id=bridge,helper=/usr/local/libexec/qemu-bridge-helper \
 -device virtio-net-pci,netdev=bridge,id=pubnet,mac=13:37:12:34:12:34 \
 -netdev user,id=user,hostfwd=tcp::24800-:24800,hostfwd=tcp::3389-:3389 \

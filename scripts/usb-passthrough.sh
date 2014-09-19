@@ -18,45 +18,12 @@ fi
 
 # pass through main mouse and keyboard
 if [[ "$2" == "input" || "$2" == "all" ]]; then
-    # Holtek Semiconductor, Inc. (Ducky GO2PRO)
+    # Ducky Mini
     # Ideazon, Inc. (SteelSeries Sensei RAW)
     USB_DEVICES+=(
-        "04d9:0230"
+        "0f39:0611"
         "1038:1369"
     )
-fi
-
-if [[ "$2" == "music" || "$2" == "all" ]]; then
-    # AKAI APC20
-    # Casio MIDI Keyboard
-    # Samson USB Mic
-    # Native Instruments Maschine Mikro MK2
-    USB_DEVICES+=(
-        "09e8:007b"
-        "07cf:6803"
-        "17a0:0305"
-        "17cc:1200"
-    )
-fi
-
-# pass through rest of usb devices
-if [[ "$2" == "most" || "$2" == "all" ]]; then
-	# Logitech, Inc. Unifying Receiver
-	# Microsoft Corp. Xbox360 Controller
-	# Turtle beach
-	# Bluetooth Dongle
-	# ACRUX gc adapter
-	# driving force 1
-	# driving force 2
-	USB_DEVICES+=(
-		"046d:c52b"
-		"045e:028e"
-		"10f5:0211"
-		"0a12:0001"
-		"1a34:f705"
-		"046d:c294"
-		"046d:c29a"
-	)
 fi
 
 # loop over given search strings
@@ -70,11 +37,11 @@ for i in "${USB_DEVICES[@]}"; do
 
 		guestbus="xhci.0"
 		vendorproduct="$vendor:$product"
-		if [[ $vendorproduct == "10f5:0211" || $vendorproduct == "0f39:0611" ]]; then
+		#if [[ $vendorproduct == "10f5:0211" || $vendorproduct == "0f39:0611" ]]; then
 			# for some reason the qemu xhci code does not like this device
-			echo "passing to uhci"
-			guestbus="uhci.0"
-		fi
+		#	echo "passing to uhci"
+		#	guestbus="uhci.0"
+		#fi
 
 		if [[ $1 == "add" ]]; then
 			echo "Passing through (USB):"

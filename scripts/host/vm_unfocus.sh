@@ -13,5 +13,4 @@ herbstclient reload
 
 # undo usb passthrough
 ~/vm/scripts/usb-passthrough.sh del input
-xmodmap /home/rasse/.Xmodmap	# reset keyboard layout to normal
 xset m 1 1						# reset mouse accel settings to normal
