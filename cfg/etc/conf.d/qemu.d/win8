@@ -14,9 +14,24 @@ args="-monitor stdio -enable-kvm -M q35 -m 6000 \
 -device vfio-pci,host=01:00.0,bus=root.1,addr=00.0,multifunction=on,x-vga=on -vga none -nographic \
 -device vfio-pci,host=00:1b.0,bus=root.1,addr=00.1 \
 -usb \
+-device nec-usb-xhci,id=xhci_defaults0 \
+-device nec-usb-xhci,id=xhci_defaults1 \
 -device nec-usb-xhci,id=xhci \
 -device ich9-usb-uhci1,id=uhci \
--device ich9-usb-ehci1,id=ehci \
+-device usb-ehci,id=ehci \
+\
+-device usb-host,bus=xhci_defaults0.0,vendorid=6092,productid=4608,id=maschine \
+-device usb-host,bus=xhci_defaults0.0,vendorid=2536,productid=123,id=akai_apc20 \
+-device usb-host,bus=xhci_defaults0.0,vendorid=1999,productid=26627,id=casio_midi_keyboard \
+-device usb-host,bus=xhci_defaults0.0,vendorid=6048,productid=773,id=samson_usb_mic \
+-device usb-host,bus=xhci_defaults0.0,vendorid=1133,productid=50475,id=logitech_unifying \
+-device usb-host,bus=xhci_defaults1.0,vendorid=2578,productid=1,id=bluetooth_dongle \
+-device usb-host,bus=xhci_defaults1.0,vendorid=1133,productid=49812,id=logitech_steering_wheel1 \
+-device usb-host,bus=xhci_defaults1.0,vendorid=1133,productid=49818,id=logitech_steering_wheel2 \
+-device usb-host,bus=xhci_defaults1.0,vendorid=6708,productid=63237,id=gc_adapter \
+-device usb-host,bus=xhci_defaults1.0,vendorid=4341,productid=529,id=usb_audio_dongle \
+-device usb-host,bus=xhci_defaults1.0,vendorid=1118,productid=654,id=xbox360_controller \
+\
 -netdev bridge,id=bridge,helper=/usr/local/libexec/qemu-bridge-helper \
 -device virtio-net-pci,netdev=bridge,id=pubnet,mac=13:37:12:34:12:34 \
 -netdev user,id=user,hostfwd=tcp::24800-:24800,hostfwd=tcp::3389-:3389 \

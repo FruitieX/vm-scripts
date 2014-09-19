@@ -6,11 +6,16 @@ Environment="type=system-x86_64" "haltcmd=kill -INT $MAINPID" \
 	    "QEMU_AUDIO_DRV=pa" "QEMU_PA_SAMPLES=1024"
 EnvironmentFile=/etc/conf.d/qemu.d/%i
 ExecStartPre=/usr/bin/vm_init.sh
-ExecStart=/usr/bin/env qemu-${type} -name %i -nographic $args
+ExecStart=/home/rasse/src/qemu-latest/x86_64-softmmu/qemu-system-x86_64 -name %i -nographic $args
 ExecStop=/bin/sh -c ${haltcmd}
 TimeoutStopSec=30
 KillSignal=SIGCONT
+IOSchedulingClass=realtime
+IOSchedulingPriority=0
 CPUSchedulingPolicy=rr
+CPUSchedulingPriority=90
+CPUAffinity=1 2 3 4
+Nice=-10
 
 [Install]
 WantedBy=multi-user.target
