@@ -13,6 +13,6 @@ xrandr --output VGA1 --mode 1920x1080 --rate 75 --rotate right --pos 3000x0
 feh --bg-tile ~/dotfiles/.compiled/bg.png &
 herbstclient reload
 xset m 1 1                      # reset mouse accel settings to normal
-xmodmap ~/.Xmodmap              # reset keyboard layout to normal
+xmodmap ~/.Xmodmap || true      # reset keyboard layout to normal
 exit 0
 # pass through usb devices

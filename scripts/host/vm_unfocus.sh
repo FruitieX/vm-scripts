@@ -14,4 +14,4 @@ herbstclient reload
 # undo usb passthrough
 ~/vm/scripts/usb-passthrough.sh del input
 xset m 1 1                      # reset mouse accel settings to normal
-xmodmap ~/.Xmodmap
+xmodmap ~/.Xmodmap || true
