@@ -20,9 +20,11 @@ fi
 if [[ "$2" == "input" || "$2" == "all" ]]; then
     # Ducky Mini
     # Ideazon, Inc. (SteelSeries Sensei RAW)
+    # Holtek Semiconductor
     USB_DEVICES+=(
         "0f39:0611"
         "1038:1369"
+        "04d9:0230"
     )
 fi
 
